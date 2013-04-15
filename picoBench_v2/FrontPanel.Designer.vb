@@ -50,13 +50,19 @@ Partial Class FrontPanel
         Me.Setup = New System.Windows.Forms.Button()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.VPCalibrateBtn = New System.Windows.Forms.Button()
+        Me.CPCalibrateBtn = New System.Windows.Forms.Button()
+        Me.PSCalibrateBtn = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.VPCalibrateBtn)
         Me.GroupBox1.Controls.Add(Me.VPChart)
         Me.GroupBox1.Controls.Add(Me.VPAve)
         Me.GroupBox1.Controls.Add(Me.VPLog)
@@ -73,7 +79,7 @@ Partial Class FrontPanel
         'VPChart
         '
         Me.VPChart.AutoSize = True
-        Me.VPChart.Location = New System.Drawing.Point(141, 83)
+        Me.VPChart.Location = New System.Drawing.Point(135, 78)
         Me.VPChart.Name = "VPChart"
         Me.VPChart.Size = New System.Drawing.Size(51, 17)
         Me.VPChart.TabIndex = 12
@@ -93,7 +99,7 @@ Partial Class FrontPanel
         'VPLog
         '
         Me.VPLog.AutoSize = True
-        Me.VPLog.Location = New System.Drawing.Point(192, 83)
+        Me.VPLog.Location = New System.Drawing.Point(192, 78)
         Me.VPLog.Name = "VPLog"
         Me.VPLog.Size = New System.Drawing.Size(44, 17)
         Me.VPLog.TabIndex = 10
@@ -137,6 +143,7 @@ Partial Class FrontPanel
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.CPCalibrateBtn)
         Me.GroupBox2.Controls.Add(Me.CPChart)
         Me.GroupBox2.Controls.Add(Me.CPLog)
         Me.GroupBox2.Controls.Add(Me.CPAve)
@@ -153,7 +160,7 @@ Partial Class FrontPanel
         'CPChart
         '
         Me.CPChart.AutoSize = True
-        Me.CPChart.Location = New System.Drawing.Point(141, 83)
+        Me.CPChart.Location = New System.Drawing.Point(135, 78)
         Me.CPChart.Name = "CPChart"
         Me.CPChart.Size = New System.Drawing.Size(51, 17)
         Me.CPChart.TabIndex = 16
@@ -163,7 +170,7 @@ Partial Class FrontPanel
         'CPLog
         '
         Me.CPLog.AutoSize = True
-        Me.CPLog.Location = New System.Drawing.Point(192, 83)
+        Me.CPLog.Location = New System.Drawing.Point(192, 78)
         Me.CPLog.Name = "CPLog"
         Me.CPLog.Size = New System.Drawing.Size(44, 17)
         Me.CPLog.TabIndex = 15
@@ -216,6 +223,7 @@ Partial Class FrontPanel
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.PSCalibrateBtn)
         Me.GroupBox3.Controls.Add(Me.PSLog)
         Me.GroupBox3.Controls.Add(Me.PSAve)
         Me.GroupBox3.Controls.Add(Me.PSInst)
@@ -235,7 +243,7 @@ Partial Class FrontPanel
         'PSLog
         '
         Me.PSLog.AutoSize = True
-        Me.PSLog.Location = New System.Drawing.Point(336, 77)
+        Me.PSLog.Location = New System.Drawing.Point(337, 81)
         Me.PSLog.Name = "PSLog"
         Me.PSLog.Size = New System.Drawing.Size(44, 17)
         Me.PSLog.TabIndex = 13
@@ -332,22 +340,61 @@ Partial Class FrontPanel
         '
         'Setup
         '
-        Me.Setup.Location = New System.Drawing.Point(19, 194)
+        Me.Setup.Location = New System.Drawing.Point(19, 198)
         Me.Setup.Name = "Setup"
         Me.Setup.Size = New System.Drawing.Size(75, 23)
         Me.Setup.TabIndex = 9
         Me.Setup.Text = "Setup..."
         Me.Setup.UseVisualStyleBackColor = True
         '
+        'SerialPort1
+        '
+        '
         'Timer1
         '
         Me.Timer1.Interval = 990
+        '
+        'VPCalibrateBtn
+        '
+        Me.VPCalibrateBtn.Location = New System.Drawing.Point(6, 74)
+        Me.VPCalibrateBtn.Name = "VPCalibrateBtn"
+        Me.VPCalibrateBtn.Size = New System.Drawing.Size(57, 23)
+        Me.VPCalibrateBtn.TabIndex = 13
+        Me.VPCalibrateBtn.Text = "Calibrate"
+        Me.VPCalibrateBtn.UseVisualStyleBackColor = True
+        '
+        'CPCalibrateBtn
+        '
+        Me.CPCalibrateBtn.Location = New System.Drawing.Point(6, 74)
+        Me.CPCalibrateBtn.Name = "CPCalibrateBtn"
+        Me.CPCalibrateBtn.Size = New System.Drawing.Size(57, 23)
+        Me.CPCalibrateBtn.TabIndex = 17
+        Me.CPCalibrateBtn.Text = "Calibrate"
+        Me.CPCalibrateBtn.UseVisualStyleBackColor = True
+        '
+        'PSCalibrateBtn
+        '
+        Me.PSCalibrateBtn.Location = New System.Drawing.Point(6, 79)
+        Me.PSCalibrateBtn.Name = "PSCalibrateBtn"
+        Me.PSCalibrateBtn.Size = New System.Drawing.Size(57, 23)
+        Me.PSCalibrateBtn.TabIndex = 14
+        Me.PSCalibrateBtn.Text = "Calibrate"
+        Me.PSCalibrateBtn.UseVisualStyleBackColor = True
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(13, 117)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(97, 75)
+        Me.PictureBox1.TabIndex = 10
+        Me.PictureBox1.TabStop = False
         '
         'FrontPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(515, 241)
+        Me.ClientSize = New System.Drawing.Size(515, 237)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Setup)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
@@ -362,6 +409,7 @@ Partial Class FrontPanel
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -392,5 +440,9 @@ Partial Class FrontPanel
     Friend WithEvents Setup As System.Windows.Forms.Button
     Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents VPCalibrateBtn As System.Windows.Forms.Button
+    Friend WithEvents CPCalibrateBtn As System.Windows.Forms.Button
+    Friend WithEvents PSCalibrateBtn As System.Windows.Forms.Button
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
 
 End Class
