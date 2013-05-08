@@ -49,16 +49,16 @@ Public Class FrontPanel
     Private Sub VPInst_CheckedChanged(sender As Object, e As EventArgs) Handles VPInst.CheckedChanged
     End Sub
 
-    Private Sub CPAve_CheckedChanged(sender As Object, e As EventArgs) Handles CPAve.CheckedChanged
+    Private Sub CPAve_CheckedChanged(sender As Object, e As EventArgs)
     End Sub
 
-    Private Sub CPInst_CheckedChanged(sender As Object, e As EventArgs) Handles CPInst.CheckedChanged
+    Private Sub CPInst_CheckedChanged(sender As Object, e As EventArgs)
     End Sub
 
-    Private Sub PSAve_CheckedChanged(sender As Object, e As EventArgs) Handles PSAve.CheckedChanged
+    Private Sub PSAve_CheckedChanged(sender As Object, e As EventArgs)
     End Sub
 
-    Private Sub PSInst_CheckedChanged(sender As Object, e As EventArgs) Handles PSInst.CheckedChanged
+    Private Sub PSInst_CheckedChanged(sender As Object, e As EventArgs)
     End Sub
 
     Protected Overrides Sub OnClosing(ByVal e As System.ComponentModel.CancelEventArgs)
