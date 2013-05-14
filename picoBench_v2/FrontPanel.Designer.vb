@@ -24,20 +24,33 @@ Partial Class FrontPanel
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.VPInst = New System.Windows.Forms.RadioButton()
+        Me.VPAve = New System.Windows.Forms.RadioButton()
         Me.VPCalibrateBtn = New System.Windows.Forms.Button()
         Me.VPChart = New System.Windows.Forms.CheckBox()
-        Me.VPAve = New System.Windows.Forms.RadioButton()
         Me.VPLog = New System.Windows.Forms.CheckBox()
-        Me.VPInst = New System.Windows.Forms.RadioButton()
         Me.VPUnits = New System.Windows.Forms.Label()
         Me.VPData = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.Res_uA = New System.Windows.Forms.RadioButton()
+        Me.Res_mA = New System.Windows.Forms.RadioButton()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.CPInst = New System.Windows.Forms.RadioButton()
+        Me.CPAve = New System.Windows.Forms.RadioButton()
         Me.CPCalibrateBtn = New System.Windows.Forms.Button()
         Me.CPChart = New System.Windows.Forms.CheckBox()
         Me.CPLog = New System.Windows.Forms.CheckBox()
-        Me.CPUnits = New System.Windows.Forms.Label()
         Me.CPData = New System.Windows.Forms.TextBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.CPUnits = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.PSInst = New System.Windows.Forms.RadioButton()
+        Me.PSAve = New System.Windows.Forms.RadioButton()
         Me.PSCalibrateBtn = New System.Windows.Forms.Button()
         Me.PSLog = New System.Windows.Forms.CheckBox()
         Me.PSWUnits = New System.Windows.Forms.Label()
@@ -46,28 +59,21 @@ Partial Class FrontPanel
         Me.PSWData = New System.Windows.Forms.TextBox()
         Me.PSCData = New System.Windows.Forms.TextBox()
         Me.PSVData = New System.Windows.Forms.TextBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Setup = New System.Windows.Forms.Button()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.CPInst = New System.Windows.Forms.RadioButton()
-        Me.CPAve = New System.Windows.Forms.RadioButton()
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.PSInst = New System.Windows.Forms.RadioButton()
-        Me.PSAve = New System.Windows.Forms.RadioButton()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.Res_mA = New System.Windows.Forms.RadioButton()
-        Me.Res_uA = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
-        Me.GroupBox6.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
+        Me.GroupBox6.SuspendLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -84,6 +90,39 @@ Partial Class FrontPanel
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Voltage Probe"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.VPInst)
+        Me.GroupBox4.Controls.Add(Me.VPAve)
+        Me.GroupBox4.Location = New System.Drawing.Point(8, 14)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(72, 58)
+        Me.GroupBox4.TabIndex = 14
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Sampling"
+        '
+        'VPInst
+        '
+        Me.VPInst.AutoSize = True
+        Me.VPInst.Checked = True
+        Me.VPInst.Location = New System.Drawing.Point(6, 16)
+        Me.VPInst.Name = "VPInst"
+        Me.VPInst.Size = New System.Drawing.Size(57, 17)
+        Me.VPInst.TabIndex = 3
+        Me.VPInst.TabStop = True
+        Me.VPInst.Text = "Instant"
+        Me.VPInst.UseVisualStyleBackColor = True
+        '
+        'VPAve
+        '
+        Me.VPAve.AutoSize = True
+        Me.VPAve.Location = New System.Drawing.Point(6, 36)
+        Me.VPAve.Name = "VPAve"
+        Me.VPAve.Size = New System.Drawing.Size(44, 17)
+        Me.VPAve.TabIndex = 11
+        Me.VPAve.Text = "Ave"
+        Me.VPAve.UseVisualStyleBackColor = True
         '
         'VPCalibrateBtn
         '
@@ -104,16 +143,6 @@ Partial Class FrontPanel
         Me.VPChart.Text = "Chart"
         Me.VPChart.UseVisualStyleBackColor = True
         '
-        'VPAve
-        '
-        Me.VPAve.AutoSize = True
-        Me.VPAve.Location = New System.Drawing.Point(6, 36)
-        Me.VPAve.Name = "VPAve"
-        Me.VPAve.Size = New System.Drawing.Size(44, 17)
-        Me.VPAve.TabIndex = 11
-        Me.VPAve.Text = "Ave"
-        Me.VPAve.UseVisualStyleBackColor = True
-        '
         'VPLog
         '
         Me.VPLog.AutoSize = True
@@ -123,18 +152,6 @@ Partial Class FrontPanel
         Me.VPLog.TabIndex = 10
         Me.VPLog.Text = "Log"
         Me.VPLog.UseVisualStyleBackColor = True
-        '
-        'VPInst
-        '
-        Me.VPInst.AutoSize = True
-        Me.VPInst.Checked = True
-        Me.VPInst.Location = New System.Drawing.Point(6, 16)
-        Me.VPInst.Name = "VPInst"
-        Me.VPInst.Size = New System.Drawing.Size(57, 17)
-        Me.VPInst.TabIndex = 3
-        Me.VPInst.TabStop = True
-        Me.VPInst.Text = "Instant"
-        Me.VPInst.UseVisualStyleBackColor = True
         '
         'VPUnits
         '
@@ -161,19 +178,98 @@ Partial Class FrontPanel
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.GroupBox7)
         Me.GroupBox2.Controls.Add(Me.GroupBox5)
         Me.GroupBox2.Controls.Add(Me.CPCalibrateBtn)
         Me.GroupBox2.Controls.Add(Me.CPChart)
         Me.GroupBox2.Controls.Add(Me.CPLog)
-        Me.GroupBox2.Controls.Add(Me.CPUnits)
         Me.GroupBox2.Controls.Add(Me.CPData)
+        Me.GroupBox2.Controls.Add(Me.PictureBox2)
+        Me.GroupBox2.Controls.Add(Me.CPUnits)
         Me.GroupBox2.Location = New System.Drawing.Point(215, 7)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(260, 104)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Current Probe"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.Label1.Location = New System.Drawing.Point(164, 52)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 26)
+        Me.Label1.TabIndex = 19
+        Me.Label1.Text = "Over" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Range"
+        Me.Label1.Visible = False
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.Res_uA)
+        Me.GroupBox7.Controls.Add(Me.Res_mA)
+        Me.GroupBox7.Location = New System.Drawing.Point(86, 14)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(72, 58)
+        Me.GroupBox7.TabIndex = 18
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Resolution"
+        '
+        'Res_uA
+        '
+        Me.Res_uA.AutoSize = True
+        Me.Res_uA.Location = New System.Drawing.Point(6, 36)
+        Me.Res_uA.Name = "Res_uA"
+        Me.Res_uA.Size = New System.Drawing.Size(47, 17)
+        Me.Res_uA.TabIndex = 1
+        Me.Res_uA.Text = "1 uA"
+        Me.Res_uA.UseVisualStyleBackColor = True
+        '
+        'Res_mA
+        '
+        Me.Res_mA.AutoSize = True
+        Me.Res_mA.Checked = True
+        Me.Res_mA.Location = New System.Drawing.Point(6, 16)
+        Me.Res_mA.Name = "Res_mA"
+        Me.Res_mA.Size = New System.Drawing.Size(58, 17)
+        Me.Res_mA.TabIndex = 0
+        Me.Res_mA.TabStop = True
+        Me.Res_mA.Text = "0.1 mA"
+        Me.Res_mA.UseVisualStyleBackColor = True
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.CPInst)
+        Me.GroupBox5.Controls.Add(Me.CPAve)
+        Me.GroupBox5.Location = New System.Drawing.Point(8, 14)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(72, 58)
+        Me.GroupBox5.TabIndex = 15
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Sampling"
+        '
+        'CPInst
+        '
+        Me.CPInst.AutoSize = True
+        Me.CPInst.Checked = True
+        Me.CPInst.Location = New System.Drawing.Point(6, 16)
+        Me.CPInst.Name = "CPInst"
+        Me.CPInst.Size = New System.Drawing.Size(57, 17)
+        Me.CPInst.TabIndex = 3
+        Me.CPInst.TabStop = True
+        Me.CPInst.Text = "Instant"
+        Me.CPInst.UseVisualStyleBackColor = True
+        '
+        'CPAve
+        '
+        Me.CPAve.AutoSize = True
+        Me.CPAve.Location = New System.Drawing.Point(6, 36)
+        Me.CPAve.Name = "CPAve"
+        Me.CPAve.Size = New System.Drawing.Size(44, 17)
+        Me.CPAve.TabIndex = 11
+        Me.CPAve.Text = "Ave"
+        Me.CPAve.UseVisualStyleBackColor = True
         '
         'CPCalibrateBtn
         '
@@ -204,16 +300,6 @@ Partial Class FrontPanel
         Me.CPLog.Text = "Log"
         Me.CPLog.UseVisualStyleBackColor = True
         '
-        'CPUnits
-        '
-        Me.CPUnits.AutoSize = True
-        Me.CPUnits.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CPUnits.Location = New System.Drawing.Point(223, 23)
-        Me.CPUnits.Name = "CPUnits"
-        Me.CPUnits.Size = New System.Drawing.Size(35, 21)
-        Me.CPUnits.TabIndex = 12
-        Me.CPUnits.Text = "mA"
-        '
         'CPData
         '
         Me.CPData.BackColor = System.Drawing.SystemColors.Info
@@ -226,8 +312,29 @@ Partial Class FrontPanel
         Me.CPData.Text = "64.7"
         Me.CPData.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.PictureBox2.Location = New System.Drawing.Point(162, 16)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(63, 65)
+        Me.PictureBox2.TabIndex = 20
+        Me.PictureBox2.TabStop = False
+        Me.PictureBox2.Visible = False
+        '
+        'CPUnits
+        '
+        Me.CPUnits.AutoSize = True
+        Me.CPUnits.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CPUnits.Location = New System.Drawing.Point(223, 23)
+        Me.CPUnits.Name = "CPUnits"
+        Me.CPUnits.Size = New System.Drawing.Size(35, 21)
+        Me.CPUnits.TabIndex = 12
+        Me.CPUnits.Text = "mA"
+        '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Controls.Add(Me.GroupBox6)
         Me.GroupBox3.Controls.Add(Me.PSCalibrateBtn)
         Me.GroupBox3.Controls.Add(Me.PSLog)
@@ -237,12 +344,57 @@ Partial Class FrontPanel
         Me.GroupBox3.Controls.Add(Me.PSWData)
         Me.GroupBox3.Controls.Add(Me.PSCData)
         Me.GroupBox3.Controls.Add(Me.PSVData)
+        Me.GroupBox3.Controls.Add(Me.PictureBox3)
         Me.GroupBox3.Location = New System.Drawing.Point(116, 117)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(359, 104)
         Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Power Supply"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.Label2.Location = New System.Drawing.Point(212, 59)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(55, 26)
+        Me.Label2.TabIndex = 20
+        Me.Label2.Text = "Limit" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Exceeded"
+        Me.Label2.Visible = False
+        '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.PSInst)
+        Me.GroupBox6.Controls.Add(Me.PSAve)
+        Me.GroupBox6.Location = New System.Drawing.Point(8, 14)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(72, 58)
+        Me.GroupBox6.TabIndex = 16
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Sampling"
+        '
+        'PSInst
+        '
+        Me.PSInst.AutoSize = True
+        Me.PSInst.Checked = True
+        Me.PSInst.Location = New System.Drawing.Point(6, 16)
+        Me.PSInst.Name = "PSInst"
+        Me.PSInst.Size = New System.Drawing.Size(57, 17)
+        Me.PSInst.TabIndex = 3
+        Me.PSInst.TabStop = True
+        Me.PSInst.Text = "Instant"
+        Me.PSInst.UseVisualStyleBackColor = True
+        '
+        'PSAve
+        '
+        Me.PSAve.AutoSize = True
+        Me.PSAve.Location = New System.Drawing.Point(6, 36)
+        Me.PSAve.Name = "PSAve"
+        Me.PSAve.Size = New System.Drawing.Size(44, 17)
+        Me.PSAve.TabIndex = 11
+        Me.PSAve.Text = "Ave"
+        Me.PSAve.UseVisualStyleBackColor = True
         '
         'PSCalibrateBtn
         '
@@ -329,6 +481,16 @@ Partial Class FrontPanel
         Me.PSVData.Text = "3.31"
         Me.PSVData.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'PictureBox3
+        '
+        Me.PictureBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.PictureBox3.Location = New System.Drawing.Point(115, 54)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(155, 37)
+        Me.PictureBox3.TabIndex = 21
+        Me.PictureBox3.TabStop = False
+        Me.PictureBox3.Visible = False
+        '
         'Setup
         '
         Me.Setup.Location = New System.Drawing.Point(19, 198)
@@ -353,116 +515,6 @@ Partial Class FrontPanel
         Me.PictureBox1.TabIndex = 10
         Me.PictureBox1.TabStop = False
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.VPInst)
-        Me.GroupBox4.Controls.Add(Me.VPAve)
-        Me.GroupBox4.Location = New System.Drawing.Point(8, 14)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(72, 58)
-        Me.GroupBox4.TabIndex = 14
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Sampling"
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.CPInst)
-        Me.GroupBox5.Controls.Add(Me.CPAve)
-        Me.GroupBox5.Location = New System.Drawing.Point(8, 14)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(72, 58)
-        Me.GroupBox5.TabIndex = 15
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Sampling"
-        '
-        'CPInst
-        '
-        Me.CPInst.AutoSize = True
-        Me.CPInst.Checked = True
-        Me.CPInst.Location = New System.Drawing.Point(6, 16)
-        Me.CPInst.Name = "CPInst"
-        Me.CPInst.Size = New System.Drawing.Size(57, 17)
-        Me.CPInst.TabIndex = 3
-        Me.CPInst.TabStop = True
-        Me.CPInst.Text = "Instant"
-        Me.CPInst.UseVisualStyleBackColor = True
-        '
-        'CPAve
-        '
-        Me.CPAve.AutoSize = True
-        Me.CPAve.Location = New System.Drawing.Point(6, 36)
-        Me.CPAve.Name = "CPAve"
-        Me.CPAve.Size = New System.Drawing.Size(44, 17)
-        Me.CPAve.TabIndex = 11
-        Me.CPAve.Text = "Ave"
-        Me.CPAve.UseVisualStyleBackColor = True
-        '
-        'GroupBox6
-        '
-        Me.GroupBox6.Controls.Add(Me.PSInst)
-        Me.GroupBox6.Controls.Add(Me.PSAve)
-        Me.GroupBox6.Location = New System.Drawing.Point(8, 14)
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(72, 58)
-        Me.GroupBox6.TabIndex = 16
-        Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Text = "Sampling"
-        '
-        'PSInst
-        '
-        Me.PSInst.AutoSize = True
-        Me.PSInst.Checked = True
-        Me.PSInst.Location = New System.Drawing.Point(6, 16)
-        Me.PSInst.Name = "PSInst"
-        Me.PSInst.Size = New System.Drawing.Size(57, 17)
-        Me.PSInst.TabIndex = 3
-        Me.PSInst.TabStop = True
-        Me.PSInst.Text = "Instant"
-        Me.PSInst.UseVisualStyleBackColor = True
-        '
-        'PSAve
-        '
-        Me.PSAve.AutoSize = True
-        Me.PSAve.Location = New System.Drawing.Point(6, 36)
-        Me.PSAve.Name = "PSAve"
-        Me.PSAve.Size = New System.Drawing.Size(44, 17)
-        Me.PSAve.TabIndex = 11
-        Me.PSAve.Text = "Ave"
-        Me.PSAve.UseVisualStyleBackColor = True
-        '
-        'GroupBox7
-        '
-        Me.GroupBox7.Controls.Add(Me.Res_uA)
-        Me.GroupBox7.Controls.Add(Me.Res_mA)
-        Me.GroupBox7.Location = New System.Drawing.Point(86, 14)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(72, 58)
-        Me.GroupBox7.TabIndex = 18
-        Me.GroupBox7.TabStop = False
-        Me.GroupBox7.Text = "Resolution"
-        '
-        'Res_mA
-        '
-        Me.Res_mA.AutoSize = True
-        Me.Res_mA.Checked = True
-        Me.Res_mA.Location = New System.Drawing.Point(6, 16)
-        Me.Res_mA.Name = "Res_mA"
-        Me.Res_mA.Size = New System.Drawing.Size(58, 17)
-        Me.Res_mA.TabIndex = 0
-        Me.Res_mA.TabStop = True
-        Me.Res_mA.Text = "0.1 mA"
-        Me.Res_mA.UseVisualStyleBackColor = True
-        '
-        'Res_uA
-        '
-        Me.Res_uA.AutoSize = True
-        Me.Res_uA.Location = New System.Drawing.Point(6, 36)
-        Me.Res_uA.Name = "Res_uA"
-        Me.Res_uA.Size = New System.Drawing.Size(47, 17)
-        Me.Res_uA.TabIndex = 1
-        Me.Res_uA.Text = "1 uA"
-        Me.Res_uA.UseVisualStyleBackColor = True
-        '
         'FrontPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -479,19 +531,21 @@ Partial Class FrontPanel
         Me.Text = "picoBench°"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
-        Me.GroupBox6.ResumeLayout(False)
-        Me.GroupBox6.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -532,5 +586,9 @@ Partial Class FrontPanel
     Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
     Friend WithEvents PSInst As System.Windows.Forms.RadioButton
     Friend WithEvents PSAve As System.Windows.Forms.RadioButton
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
 
 End Class

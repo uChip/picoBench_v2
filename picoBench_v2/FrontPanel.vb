@@ -3,6 +3,17 @@ Imports System.IO
 Imports System.Text
 
 Public Class FrontPanel
+    ' Define picoBench commands
+    Public Const VP_INSTANT = 10
+    Public Const CP_INSTANT = 11
+    Public Const PS_INSTANT = 12
+    Public Const VP_AVERAGE = 13
+    Public Const CP_AVERAGE = 14
+    Public Const PS_AVERAGE = 15
+    Public Const CP_RANGE_LO = 24
+    Public Const CP_RANGE_HI = 25
+    Public Const ARDUINO_RESET = 255
+
     Public theData As New picoBenchData
     Public theSettings As New SettingsClass
     Dim returnStr As String = ""
@@ -14,7 +25,6 @@ Public Class FrontPanel
     Dim VPLogEnabled As Boolean
     Dim CPLogEnabled As Boolean
     Dim PSLogEnabled As Boolean
-
 
 
     Private Sub FrontPanel_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -38,27 +48,70 @@ Public Class FrontPanel
     Public Sub UpdateDisplay()
         VPData.Text = theData.GetVPVolts
         CPData.Text = theData.GetCPAmps
+        If Res_uA.Checked And Val(CPData.Text) > 32 Then
+            Label1.Visible = True
+            PictureBox2.Visible = True
+        Else
+            Label1.Visible = False
+            PictureBox2.Visible = False
+        End If
         PSVData.Text = theData.GetPSVolts
         PSCData.Text = theData.GetPSAmps
         PSWData.Text = theData.GetPSWatts
     End Sub
 
     Private Sub VPAve_CheckedChanged(sender As Object, e As EventArgs) Handles VPAve.CheckedChanged
+        If SerialPort1.IsOpen Then
+            If VPAve.Checked Then SendSerial("#" & Chr(VP_AVERAGE) & Chr(10))
+        End If
     End Sub
 
     Private Sub VPInst_CheckedChanged(sender As Object, e As EventArgs) Handles VPInst.CheckedChanged
+        If SerialPort1.IsOpen Then
+            If VPInst.Checked Then SendSerial("#" & Chr(VP_INSTANT) & Chr(10))
+        End If
     End Sub
 
-    Private Sub CPAve_CheckedChanged(sender As Object, e As EventArgs)
+    Private Sub CPAve_CheckedChanged_1(sender As Object, e As EventArgs) Handles CPAve.CheckedChanged
+        If SerialPort1.IsOpen Then
+            If CPAve.Checked Then SendSerial("#" & Chr(CP_AVERAGE) & Chr(10))
+        End If
     End Sub
 
-    Private Sub CPInst_CheckedChanged(sender As Object, e As EventArgs)
+    Private Sub CPInst_CheckedChanged_1(sender As Object, e As EventArgs) Handles CPInst.CheckedChanged
+        If SerialPort1.IsOpen Then
+            If CPInst.Checked Then SendSerial("#" & Chr(CP_INSTANT) & Chr(10))
+        End If
     End Sub
 
-    Private Sub PSAve_CheckedChanged(sender As Object, e As EventArgs)
+    Private Sub PSAve_CheckedChanged(sender As Object, e As EventArgs) Handles PSAve.CheckedChanged
+        If SerialPort1.IsOpen Then
+            If PSAve.Checked Then SendSerial("#" & Chr(PS_AVERAGE) & Chr(10))
+        End If
     End Sub
 
-    Private Sub PSInst_CheckedChanged(sender As Object, e As EventArgs)
+    Private Sub PSInst_CheckedChanged_1(sender As Object, e As EventArgs) Handles PSInst.CheckedChanged
+        If SerialPort1.IsOpen Then
+            If PSInst.Checked Then SendSerial("#" & Chr(PS_INSTANT) & Chr(10))
+        End If
+    End Sub
+
+    Private Sub Res_mA_CheckedChanged(sender As Object, e As EventArgs) Handles Res_mA.CheckedChanged
+        If SerialPort1.IsOpen Then
+            If Res_mA.Checked Then
+                SendSerial("#" & Chr(CP_RANGE_HI) & Chr(10))
+                CPUnits.Text = "mA"
+            End If
+        End If
+    End Sub
+
+    Private Sub Res_uA_CheckedChanged(sender As Object, e As EventArgs) Handles Res_uA.CheckedChanged
+        If SerialPort1.IsOpen Then
+            If Res_uA.Checked Then
+                SendSerial("#" & Chr(CP_RANGE_LO) & Chr(10))
+                CPUnits.Text = "uA"
+            End If
+        End If
     End Sub
 
     Protected Overrides Sub OnClosing(ByVal e As System.ComponentModel.CancelEventArgs)
@@ -71,7 +124,7 @@ Public Class FrontPanel
     Public Sub InitSerial()
         If theSettings.GetCOMPort() <> "" Then
             SerialPort1.PortName = theSettings.GetCOMPort()
-            SerialPort1.BaudRate = 9600
+            SerialPort1.BaudRate = 115200
             SerialPort1.DataBits = 8
             SerialPort1.Parity = Parity.None
             SerialPort1.StopBits = StopBits.One
@@ -140,7 +193,7 @@ Public Class FrontPanel
         If dataAvail > 0 Then
             dataAvail -= 1
             If dataAvail > 0 Then
-                MsgBox("We missed a message!" & dataAvail.ToString)
+                'MsgBox("We missed a message! " & dataAvail.ToString)
                 dataAvail = 0
             End If
             Return True
@@ -397,5 +450,4 @@ Public Class FrontPanel
     Public Sub StopCPChart()
         CPChart.Checked = False
     End Sub
-
 End Class

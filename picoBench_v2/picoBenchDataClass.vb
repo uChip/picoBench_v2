@@ -48,15 +48,15 @@ Public Class picoBenchData
     ' base sensor data such as Wind Chill, Dew Point, Minimums and Maximums.
     '============================================================
     Public Sub Parse(ByVal msgString As String)
-        'sample message: 63495226205,!,3,2.56,30.7,3.28,123.4,408.5,*
+        'sample message: 63495226205,!,3,2.56,30.7,3.28,123.4,*
         Dim valueArray As String() = msgString.Split(New [Char]() {","c})
         Dim arrayLength As Integer = valueArray.Length()
 
         'Validate the message
-        If arrayLength = 9 Then
+        If arrayLength = 8 Then
             If valueArray(1) = "!" And valueArray(2) = "3" Then
                 'should now have an array like the following
-                '{"63495226205", "!", "3", "2.56", "30.7", "3.28", "123.4", "408.5", "*"}
+                '{"63495226205", "!", "3", "2.56", "30.7", "3.28", "123.4", "*"}
 
                 'fill in the struct based on the array data
                 _pBData.VPVolts = valueArray(3)
