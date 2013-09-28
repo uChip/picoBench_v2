@@ -33,4 +33,4 @@ This is a MS Visual Studio project written in Visual Basic.
 ### Distribution License
 
 (c) Copyright C. Schnarel 2013
-Creative Commons License
+The software is released under [Creative Commons Share-alike 3.0](http://creativecommons.org/licenses/by-sa/3.0/).
