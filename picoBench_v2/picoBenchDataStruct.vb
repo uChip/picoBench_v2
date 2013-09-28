@@ -1,4 +1,5 @@
 ﻿Public Structure picoBenchDataStruct
+    Dim Status As String
     Dim VPVolts As String
     Dim CPAmps As String
     Dim PSVolts As String

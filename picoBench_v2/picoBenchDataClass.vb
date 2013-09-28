@@ -48,23 +48,24 @@ Public Class picoBenchData
     ' base sensor data such as Wind Chill, Dew Point, Minimums and Maximums.
     '============================================================
     Public Sub Parse(ByVal msgString As String)
-        'sample message: 63495226205,!,3,2.56,30.7,3.28,123.4,*
+        'sample message: 63495226205,!,3,EImImI,2.56,30.7,3.28,123.4,*
         Dim valueArray As String() = msgString.Split(New [Char]() {","c})
         Dim arrayLength As Integer = valueArray.Length()
 
         'Validate the message
-        If arrayLength = 8 Then
+        If arrayLength = 9 Then
             If valueArray(1) = "!" And valueArray(2) = "3" Then
                 'should now have an array like the following
-                '{"63495226205", "!", "3", "2.56", "30.7", "3.28", "123.4", "*"}
+                '{"63495226205", "!", "3", "EImImI", "2.56", "30.7", "3.28", "123.4", "*"}
 
                 'fill in the struct based on the array data
-                _pBData.VPVolts = valueArray(3)
-                _pBData.CPAmps = valueArray(4)
-                _pBData.PSVolts = valueArray(5)
-                _pBData.PSAmps = valueArray(6)
-                '_pBData.PSWatts = valueArray(7)
-                _pBData.PSWatts = (Val(valueArray(5)) * Val(valueArray(6))).ToString("F1")
+                _pBData.Status = valueArray(3)
+                _pBData.VPVolts = valueArray(4)
+                _pBData.CPAmps = valueArray(5)
+                _pBData.PSVolts = valueArray(6)
+                _pBData.PSAmps = valueArray(7)
+                '_pBData.PSWatts = valueArray(8)
+                _pBData.PSWatts = (Val(valueArray(6)) * Val(valueArray(7))).ToString("F1")
                 _pBData.Heart = 0
             Else
                 MsgBox("Oops.  Got a bad message. " & msgString)
@@ -81,6 +82,11 @@ Public Class picoBenchData
     ReadOnly Property GetpBData() As picoBenchDataStruct
         Get
             GetpBData = _pBData
+        End Get
+    End Property
+    ReadOnly Property GetStatus()
+        Get
+            GetStatus = _pBData.Status
         End Get
     End Property
     ReadOnly Property GetVPVolts()

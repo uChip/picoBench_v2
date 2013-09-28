@@ -50,6 +50,80 @@ Public Class FrontPanel
     End Sub
 
     Public Sub UpdateDisplay()
+        ' Update the display controls based on the status reported by the hardware
+        ' If the HW reports the power is being output color the button appropriately
+        If Mid(theData.GetStatus, 1, 1) = "E" Then
+            PSEnable.Text = "Standby"
+            PSEnable.BackColor = Color.Red
+        Else
+            PSEnable.Text = "Enable"
+            PSEnable.BackColor = SystemColors.Control
+        End If
+        ' Instant vs Averaging for PS sampling
+        If Mid(theData.GetStatus, 2, 1) = "A" Then
+            PSAve.Checked = True
+        Else
+            PSAve.Checked = False
+        End If
+        If Mid(theData.GetStatus, 2, 1) = "I" Then
+            PSInst.Checked = True
+        Else
+            PSInst.Checked = False
+        End If
+        ' Range setting for voltage probe - NOT IMPLEMENTED ON HW YET
+        If Mid(theData.GetStatus, 3, 1) = "u" Then
+            'Res_uV.Checked = True
+            VPUnits.Text = "mV"
+        Else
+            'Res_uV.Checked = False
+            VPUnits.Text = "V"
+        End If
+        If Mid(theData.GetStatus, 3, 1) = "m" Then
+            'Res_mV.Checked = True
+            VPUnits.Text = "V"
+        Else
+            'Res_mV.Checked = False
+            VPUnits.Text = "mV"
+        End If
+        ' Instant vs Averaging for VP sampling
+        If Mid(theData.GetStatus, 4, 1) = "A" Then
+            VPAve.Checked = True
+        Else
+            VPAve.Checked = False
+        End If
+        If Mid(theData.GetStatus, 4, 1) = "I" Then
+            VPInst.Checked = True
+        Else
+            VPInst.Checked = False
+        End If
+        ' Range select for current probe - NOT IMPLEMENTED ON HW YET
+        If Mid(theData.GetStatus, 5, 1) = "u" Then
+            Res_uA.Checked = True
+            CPUnits.Text = "uA"
+        Else
+            Res_uA.Checked = False
+            CPUnits.Text = "mA"
+        End If
+        If Mid(theData.GetStatus, 5, 1) = "m" Then
+            Res_mA.Checked = True
+            CPUnits.Text = "mA"
+        Else
+            Res_mA.Checked = False
+            CPUnits.Text = "uA"
+        End If
+        'Instant vs Averaging for CP sampling
+        If Mid(theData.GetStatus, 6, 1) = "A" Then
+            CPAve.Checked = True
+        Else
+            CPAve.Checked = False
+        End If
+        If Mid(theData.GetStatus, 6, 1) = "I" Then
+            CPInst.Checked = True
+        Else
+            CPInst.Checked = False
+        End If
+
+        ' Update the numeric data displays
         VPData.Text = theData.GetVPVolts
         CPData.Text = theData.GetCPAmps
         If Res_uA.Checked And Val(CPData.Text) > 32 Then
@@ -104,7 +178,7 @@ Public Class FrontPanel
         If SerialPort1.IsOpen Then
             If Res_mA.Checked Then
                 SendSerial("#" & Chr(CP_RANGE_HI) & Chr(10))
-                CPUnits.Text = "mA"
+                'CPUnits.Text = "mA"
             End If
         End If
     End Sub
@@ -113,7 +187,7 @@ Public Class FrontPanel
         If SerialPort1.IsOpen Then
             If Res_uA.Checked Then
                 SendSerial("#" & Chr(CP_RANGE_LO) & Chr(10))
-                CPUnits.Text = "uA"
+                'CPUnits.Text = "uA"
             End If
         End If
     End Sub
@@ -129,6 +203,7 @@ Public Class FrontPanel
         If theSettings.GetCOMPort() <> "" Then
             ' Set the timeouts
             SerialPort1.ReadTimeout = 10000
+
             Try
                 If SerialPort1.IsOpen() Then
                     SerialPort1.Close()
@@ -455,16 +530,16 @@ Public Class FrontPanel
         CPChart.Checked = False
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub PSEnable_Click(sender As Object, e As EventArgs) Handles PSEnable.Click
         If SerialPort1.IsOpen Then
-            If Button1.Text = "Enable" Then
-                Button1.Text = "Standby"
+            If PSEnable.Text = "Enable" Then
+                'Button1.Text = "Standby"
                 SendSerial("#" & Chr(PS_ENABLE) & Chr(10))
-                Button1.BackColor = Color.Red
+                'Button1.BackColor = Color.Red
             Else
-                Button1.Text = "Enable"
+                'Button1.Text = "Enable"
                 SendSerial("#" & Chr(PS_STANDBY) & Chr(10))
-                Button1.BackColor = SystemColors.Control
+                'Button1.BackColor = SystemColors.Control
             End If
         End If
     End Sub

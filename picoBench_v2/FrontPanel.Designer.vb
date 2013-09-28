@@ -47,6 +47,7 @@ Partial Class FrontPanel
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.CPUnits = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.PSEnable = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.PSInst = New System.Windows.Forms.RadioButton()
@@ -64,7 +65,6 @@ Partial Class FrontPanel
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -335,7 +335,7 @@ Partial Class FrontPanel
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.Button1)
+        Me.GroupBox3.Controls.Add(Me.PSEnable)
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Controls.Add(Me.GroupBox6)
         Me.GroupBox3.Controls.Add(Me.PSCalibrateBtn)
@@ -353,6 +353,15 @@ Partial Class FrontPanel
         Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Power Supply"
+        '
+        'PSEnable
+        '
+        Me.PSEnable.Location = New System.Drawing.Point(292, 52)
+        Me.PSEnable.Name = "PSEnable"
+        Me.PSEnable.Size = New System.Drawing.Size(57, 42)
+        Me.PSEnable.TabIndex = 22
+        Me.PSEnable.Text = "Enable"
+        Me.PSEnable.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -517,15 +526,6 @@ Partial Class FrontPanel
         Me.PictureBox1.TabIndex = 10
         Me.PictureBox1.TabStop = False
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(292, 52)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(57, 42)
-        Me.Button1.TabIndex = 22
-        Me.Button1.Text = "Enable"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'FrontPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -601,6 +601,6 @@ Partial Class FrontPanel
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents PSEnable As System.Windows.Forms.Button
 
 End Class
