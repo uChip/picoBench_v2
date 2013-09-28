@@ -64,6 +64,7 @@ Partial Class FrontPanel
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -197,7 +198,7 @@ Partial Class FrontPanel
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.Label1.BackColor = System.Drawing.Color.Red
         Me.Label1.Location = New System.Drawing.Point(164, 52)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(39, 26)
@@ -334,6 +335,7 @@ Partial Class FrontPanel
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.Button1)
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Controls.Add(Me.GroupBox6)
         Me.GroupBox3.Controls.Add(Me.PSCalibrateBtn)
@@ -355,7 +357,7 @@ Partial Class FrontPanel
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.Label2.BackColor = System.Drawing.Color.Red
         Me.Label2.Location = New System.Drawing.Point(212, 59)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(55, 26)
@@ -408,7 +410,7 @@ Partial Class FrontPanel
         'PSLog
         '
         Me.PSLog.AutoSize = True
-        Me.PSLog.Location = New System.Drawing.Point(289, 74)
+        Me.PSLog.Location = New System.Drawing.Point(69, 79)
         Me.PSLog.Name = "PSLog"
         Me.PSLog.Size = New System.Drawing.Size(44, 17)
         Me.PSLog.TabIndex = 13
@@ -515,6 +517,15 @@ Partial Class FrontPanel
         Me.PictureBox1.TabIndex = 10
         Me.PictureBox1.TabStop = False
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(292, 52)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(57, 42)
+        Me.Button1.TabIndex = 22
+        Me.Button1.Text = "Enable"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'FrontPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -590,5 +601,6 @@ Partial Class FrontPanel
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class

@@ -10,8 +10,12 @@ Public Class FrontPanel
     Public Const VP_AVERAGE = 13
     Public Const CP_AVERAGE = 14
     Public Const PS_AVERAGE = 15
+    Public Const VP_RANGE_LO = 22
+    Public Const VP_RANGE_HI = 23
     Public Const CP_RANGE_LO = 24
     Public Const CP_RANGE_HI = 25
+    Public Const PS_ENABLE = 26
+    Public Const PS_STANDBY = 27
     Public Const ARDUINO_RESET = 255
 
     Public theData As New picoBenchData
@@ -449,5 +453,19 @@ Public Class FrontPanel
 
     Public Sub StopCPChart()
         CPChart.Checked = False
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If SerialPort1.IsOpen Then
+            If Button1.Text = "Enable" Then
+                Button1.Text = "Standby"
+                SendSerial("#" & Chr(PS_ENABLE) & Chr(10))
+                Button1.BackColor = Color.Red
+            Else
+                Button1.Text = "Enable"
+                SendSerial("#" & Chr(PS_STANDBY) & Chr(10))
+                Button1.BackColor = SystemColors.Control
+            End If
+        End If
     End Sub
 End Class
