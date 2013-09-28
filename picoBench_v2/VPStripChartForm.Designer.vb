@@ -38,8 +38,8 @@ Partial Class VPStripChartForm
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.picoBench_v2.My.Resources.Resources.Chart_Background
-        Me.PictureBox1.InitialImage = Global.picoBench_v2.My.Resources.Resources.Chart_Background
+        Me.PictureBox1.Image = Global.picoBench.My.Resources.Resources.Chart_Background
+        Me.PictureBox1.InitialImage = Global.picoBench.My.Resources.Resources.Chart_Background
         Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(576, 256)

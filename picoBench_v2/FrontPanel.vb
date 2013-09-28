@@ -127,23 +127,23 @@ Public Class FrontPanel
     '======================================================================================
     Public Sub InitSerial()
         If theSettings.GetCOMPort() <> "" Then
-            SerialPort1.PortName = theSettings.GetCOMPort()
-            SerialPort1.BaudRate = 115200
-            SerialPort1.DataBits = 8
-            SerialPort1.Parity = Parity.None
-            SerialPort1.StopBits = StopBits.One
-            SerialPort1.Handshake = Handshake.RequestToSend
-            SerialPort1.DtrEnable = True
-            SerialPort1.Encoding = System.Text.Encoding.Default
-
             ' Set the timeouts
             SerialPort1.ReadTimeout = 10000
             Try
                 If SerialPort1.IsOpen() Then
                     SerialPort1.Close()
                 End If
-                SerialPort1.Open()
 
+                SerialPort1.PortName = theSettings.GetCOMPort()
+                SerialPort1.BaudRate = 115200
+                SerialPort1.DataBits = 8
+                SerialPort1.Parity = Parity.None
+                SerialPort1.StopBits = StopBits.One
+                SerialPort1.Handshake = Handshake.RequestToSend
+                SerialPort1.DtrEnable = True
+                SerialPort1.Encoding = System.Text.Encoding.Default
+
+                SerialPort1.Open()
 
             Catch ex As Exception
                 'MessageBox.Show("COMport open fail." & vbCrLf & ex.ToString())
