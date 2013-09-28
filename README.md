@@ -32,4 +32,5 @@ This is a MS Visual Studio project written in Visual Basic.
 
 ### Distribution License
 
-PCB design is Public Domain.
+(c) Copyright C. Schnarel 2013
+Creative Commons License
