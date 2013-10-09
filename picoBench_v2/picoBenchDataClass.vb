@@ -12,7 +12,7 @@ Imports System.Text
 
 Public Class picoBenchData
     ' This is the structure where the current weather data is stored.
-    ' It should be updated with each new incoming sensor message
+    ' The data is refreshed with each new incoming sensor message
     Private _pBData As New picoBenchDataStruct
 
     '============================================================
@@ -20,6 +20,7 @@ Public Class picoBenchData
     ' This one is called when this class object is first instantiated.
     '============================================================
     Public Sub New()
+        _pBData.State = "SImImI"
         _pBData.VPVolts = "--"
         _pBData.CPAmps = "--"
         _pBData.PSVolts = "--"
@@ -33,6 +34,7 @@ Public Class picoBenchData
     ' This one can be called anytime the data needs to be reset.
     '============================================================
     Public Sub Initialize()
+        _pBData.State = "SImImI"
         _pBData.VPVolts = "--"
         _pBData.CPAmps = "--"
         _pBData.PSVolts = "--"
@@ -42,10 +44,10 @@ Public Class picoBenchData
     End Sub
 
     '============================================================
-    ' This method takes in a weather data message from the sensors
-    ' and fills in the weather data structure with values converted
-    ' to the appropriate units.  It also creates values derived from the
-    ' base sensor data such as Wind Chill, Dew Point, Minimums and Maximums.
+    ' This method takes in a data message
+    ' and fills in the data structure with the values.
+    ' Note that some structure values may be calculated or converted
+    ' to more appropriate units.
     '============================================================
     Public Sub Parse(ByVal msgString As String)
         'sample message: 63495226205,!,3,EImImI,2.56,30.7,3.28,123.4,*
@@ -59,7 +61,7 @@ Public Class picoBenchData
                 '{"63495226205", "!", "3", "EImImI", "2.56", "30.7", "3.28", "123.4", "*"}
 
                 'fill in the struct based on the array data
-                _pBData.Status = valueArray(3)
+                _pBData.State = valueArray(3)
                 _pBData.VPVolts = valueArray(4)
                 _pBData.CPAmps = valueArray(5)
                 _pBData.PSVolts = valueArray(6)
@@ -84,9 +86,9 @@ Public Class picoBenchData
             GetpBData = _pBData
         End Get
     End Property
-    ReadOnly Property GetStatus()
+    ReadOnly Property GetState()
         Get
-            GetStatus = _pBData.Status
+            GetState = _pBData.State
         End Get
     End Property
     ReadOnly Property GetVPVolts()

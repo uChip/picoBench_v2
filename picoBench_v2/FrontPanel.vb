@@ -16,6 +16,8 @@ Public Class FrontPanel
     Public Const CP_RANGE_HI = 25
     Public Const PS_ENABLE = 26
     Public Const PS_STANDBY = 27
+    Public Const SAVE_STATE = 28
+    Public Const RESTORE_FACTORY_DEFAULT_STATE = 29
     Public Const ARDUINO_RESET = 255
 
     Public theData As New picoBenchData
@@ -52,7 +54,7 @@ Public Class FrontPanel
     Public Sub UpdateDisplay()
         ' Update the display controls based on the status reported by the hardware
         ' If the HW reports the power is being output color the button appropriately
-        If Mid(theData.GetStatus, 1, 1) = "E" Then
+        If Mid(theData.GetState, 1, 1) = "E" Then
             PSEnable.Text = "Standby"
             PSEnable.BackColor = Color.Red
         Else
@@ -60,25 +62,25 @@ Public Class FrontPanel
             PSEnable.BackColor = SystemColors.Control
         End If
         ' Instant vs Averaging for PS sampling
-        If Mid(theData.GetStatus, 2, 1) = "A" Then
+        If Mid(theData.GetState, 2, 1) = "A" Then
             PSAve.Checked = True
         Else
             PSAve.Checked = False
         End If
-        If Mid(theData.GetStatus, 2, 1) = "I" Then
+        If Mid(theData.GetState, 2, 1) = "I" Then
             PSInst.Checked = True
         Else
             PSInst.Checked = False
         End If
         ' Range setting for voltage probe - NOT IMPLEMENTED ON HW YET
-        If Mid(theData.GetStatus, 3, 1) = "u" Then
+        If Mid(theData.GetState, 3, 1) = "u" Then
             'Res_uV.Checked = True
             VPUnits.Text = "mV"
         Else
             'Res_uV.Checked = False
             VPUnits.Text = "V"
         End If
-        If Mid(theData.GetStatus, 3, 1) = "m" Then
+        If Mid(theData.GetState, 3, 1) = "m" Then
             'Res_mV.Checked = True
             VPUnits.Text = "V"
         Else
@@ -86,25 +88,25 @@ Public Class FrontPanel
             VPUnits.Text = "mV"
         End If
         ' Instant vs Averaging for VP sampling
-        If Mid(theData.GetStatus, 4, 1) = "A" Then
+        If Mid(theData.GetState, 4, 1) = "A" Then
             VPAve.Checked = True
         Else
             VPAve.Checked = False
         End If
-        If Mid(theData.GetStatus, 4, 1) = "I" Then
+        If Mid(theData.GetState, 4, 1) = "I" Then
             VPInst.Checked = True
         Else
             VPInst.Checked = False
         End If
         ' Range select for current probe - NOT IMPLEMENTED ON HW YET
-        If Mid(theData.GetStatus, 5, 1) = "u" Then
+        If Mid(theData.GetState, 5, 1) = "u" Then
             Res_uA.Checked = True
             CPUnits.Text = "uA"
         Else
             Res_uA.Checked = False
             CPUnits.Text = "mA"
         End If
-        If Mid(theData.GetStatus, 5, 1) = "m" Then
+        If Mid(theData.GetState, 5, 1) = "m" Then
             Res_mA.Checked = True
             CPUnits.Text = "mA"
         Else
@@ -112,12 +114,12 @@ Public Class FrontPanel
             CPUnits.Text = "uA"
         End If
         'Instant vs Averaging for CP sampling
-        If Mid(theData.GetStatus, 6, 1) = "A" Then
+        If Mid(theData.GetState, 6, 1) = "A" Then
             CPAve.Checked = True
         Else
             CPAve.Checked = False
         End If
-        If Mid(theData.GetStatus, 6, 1) = "I" Then
+        If Mid(theData.GetState, 6, 1) = "I" Then
             CPInst.Checked = True
         Else
             CPInst.Checked = False
@@ -136,6 +138,20 @@ Public Class FrontPanel
         PSVData.Text = theData.GetPSVolts
         PSCData.Text = theData.GetPSAmps
         PSWData.Text = theData.GetPSWatts
+    End Sub
+
+    Public Sub SaveState()
+        'MessageBox.Show("Got to SaveState")
+        If SerialPort1.IsOpen Then
+            SendSerial("#" & Chr(SAVE_STATE) & Chr(10))
+        End If
+    End Sub
+
+    Public Sub RestoreDefaults()
+        'MessageBox.Show("Got to RestoreDefaults")
+        If SerialPort1.IsOpen Then
+            SendSerial("#" & Chr(RESTORE_FACTORY_DEFAULT_STATE) & Chr(10))
+        End If
     End Sub
 
     Private Sub VPAve_CheckedChanged(sender As Object, e As EventArgs) Handles VPAve.CheckedChanged
@@ -200,6 +216,7 @@ Public Class FrontPanel
     ' Serial Port access code
     '======================================================================================
     Public Sub InitSerial()
+        'MessageBox.Show("Got to InitSerial" & theSettings.GetCOMPort())
         If theSettings.GetCOMPort() <> "" Then
             ' Set the timeouts
             SerialPort1.ReadTimeout = 10000
@@ -221,7 +238,7 @@ Public Class FrontPanel
                 SerialPort1.Open()
 
             Catch ex As Exception
-                'MessageBox.Show("COMport open fail." & vbCrLf & ex.ToString())
+                MessageBox.Show("COMport open fail." & vbCrLf & ex.ToString())
                 Dim p As System.Diagnostics.Process
                 'term myself.
                 p = System.Diagnostics.Process.GetCurrentProcess()

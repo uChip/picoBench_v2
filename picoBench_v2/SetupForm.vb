@@ -27,4 +27,13 @@ Public Class SetupForm
         Me.Close()
     End Sub
 
+    Private Sub SaveStateBtn_Click(sender As Object, e As EventArgs) Handles SaveStateBtn.Click
+        FrontPanel.SaveState()
+        Me.Close()
+    End Sub
+
+    Private Sub State2FacDfltsBtn_Click(sender As Object, e As EventArgs) Handles State2FacDfltsBtn.Click
+        FrontPanel.RestoreDefaults()
+        Me.Close()
+    End Sub
 End Class
