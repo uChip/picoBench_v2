@@ -78,11 +78,11 @@ Public Class FrontPanel
             VPUnits.Text = "mV"
         Else
             'Res_uV.Checked = False
-            VPUnits.Text = "V"
+            VPUnits.Text = "Volts"
         End If
         If Mid(theData.GetState, 3, 1) = "m" Then
             'Res_mV.Checked = True
-            VPUnits.Text = "V"
+            VPUnits.Text = "Volts"
         Else
             'Res_mV.Checked = False
             VPUnits.Text = "mV"
@@ -98,7 +98,7 @@ Public Class FrontPanel
         Else
             VPInst.Checked = False
         End If
-        ' Range select for current probe - NOT IMPLEMENTED ON HW YET
+        ' Range select for current probe - Implemented in 07OCT2013 and later HW
         If Mid(theData.GetState, 5, 1) = "u" Then
             Res_uA.Checked = True
             CPUnits.Text = "uA"
@@ -128,7 +128,7 @@ Public Class FrontPanel
         ' Update the numeric data displays
         VPData.Text = theData.GetVPVolts
         CPData.Text = theData.GetCPAmps
-        If Res_uA.Checked And Val(CPData.Text) > 32 Then
+        If Res_uA.Checked And Val(CPData.Text) > 32000 Then
             Label1.Visible = True
             PictureBox2.Visible = True
         Else

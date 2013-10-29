@@ -190,7 +190,7 @@ Partial Class FrontPanel
         Me.GroupBox2.Controls.Add(Me.CPUnits)
         Me.GroupBox2.Location = New System.Drawing.Point(215, 7)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(260, 104)
+        Me.GroupBox2.Size = New System.Drawing.Size(264, 104)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Current Probe"
@@ -284,7 +284,7 @@ Partial Class FrontPanel
         'CPChart
         '
         Me.CPChart.AutoSize = True
-        Me.CPChart.Location = New System.Drawing.Point(205, 55)
+        Me.CPChart.Location = New System.Drawing.Point(209, 55)
         Me.CPChart.Name = "CPChart"
         Me.CPChart.Size = New System.Drawing.Size(51, 17)
         Me.CPChart.TabIndex = 16
@@ -294,7 +294,7 @@ Partial Class FrontPanel
         'CPLog
         '
         Me.CPLog.AutoSize = True
-        Me.CPLog.Location = New System.Drawing.Point(205, 74)
+        Me.CPLog.Location = New System.Drawing.Point(209, 74)
         Me.CPLog.Name = "CPLog"
         Me.CPLog.Size = New System.Drawing.Size(44, 17)
         Me.CPLog.TabIndex = 15
@@ -308,7 +308,7 @@ Partial Class FrontPanel
         Me.CPData.Location = New System.Drawing.Point(166, 20)
         Me.CPData.Name = "CPData"
         Me.CPData.ReadOnly = True
-        Me.CPData.Size = New System.Drawing.Size(55, 29)
+        Me.CPData.Size = New System.Drawing.Size(59, 29)
         Me.CPData.TabIndex = 11
         Me.CPData.Text = "64.7"
         Me.CPData.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -318,7 +318,7 @@ Partial Class FrontPanel
         Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.PictureBox2.Location = New System.Drawing.Point(162, 16)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(63, 65)
+        Me.PictureBox2.Size = New System.Drawing.Size(67, 65)
         Me.PictureBox2.TabIndex = 20
         Me.PictureBox2.TabStop = False
         Me.PictureBox2.Visible = False
@@ -327,7 +327,8 @@ Partial Class FrontPanel
         '
         Me.CPUnits.AutoSize = True
         Me.CPUnits.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CPUnits.Location = New System.Drawing.Point(223, 23)
+        Me.CPUnits.Location = New System.Drawing.Point(227, 23)
+        Me.CPUnits.Margin = New System.Windows.Forms.Padding(0)
         Me.CPUnits.Name = "CPUnits"
         Me.CPUnits.Size = New System.Drawing.Size(35, 21)
         Me.CPUnits.TabIndex = 12
@@ -530,7 +531,7 @@ Partial Class FrontPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(488, 233)
+        Me.ClientSize = New System.Drawing.Size(492, 233)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Setup)
         Me.Controls.Add(Me.GroupBox3)
